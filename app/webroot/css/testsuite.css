@@ -1,0 +1,122 @@
+/**
+ * Unit testing styles for the HtmlReporter.
+ *
+ * @copyright     Copyright 2013 Bluehost (http://www.bluehost.com/)
+ * @package       app.webroot.css
+ * @license       GNU General Public License (http://www.gnu.org/licenses/gpl-2.0.txt)
+ */
+
+/***** Test Results *****/
+
+ul.tests {
+	margin: 0;
+	font-size: 90%;
+}
+ul.tests li {
+	list-style: none;
+	margin: 1em 0;
+}
+/* test result header */
+ul.tests li span {
+	font-size: 110%;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+ul.tests li.pass span,
+ul.tests li.skipped span {
+	display: inline;
+}
+
+ul.tests li.fail span {
+	color: red;
+}
+ul.tests li.pass span {
+	color: green;
+}
+ul.tests li.skipped span {
+	color: navy;
+}
+ul.tests li.error span {
+	color : #d15d00;
+}
+
+ul.tests li.pass,
+ul.tests li.error,
+ul.tests li.skipped,
+ul.tests li.fail {
+	background: #fff2f2;
+	border: 1px solid red;
+	padding: 1em;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+ul.tests li.pass {
+	background: #f2fff2;
+	border-color: green;
+}
+ul.tests li.skipped {
+	background: #edf1ff;
+	border-color: navy;
+}
+ul.tests li.error {
+	background: #ffffe5;
+	border-color: #df6300;
+}
+
+ul.tests li div {
+	margin: 1em 0 0;
+}
+
+/***** Coverage Reports *****/
+
+.coverage-toggle {
+	float: right;
+	margin-top: 10px;
+	font-size: 12px;
+}
+
+div.code-coverage-results div {
+	color: #555;
+}
+div.code-coverage-results div:hover {
+	background: rgb(225, 225, 225);
+}
+
+div.code-coverage-results div.covered {
+	background: rgba(65, 187, 25, 0.30);
+}
+div.code-coverage-results div.uncovered {
+	background: rgba(245, 15, 67, 0.30);
+}
+div.code-coverage-results div.ignored {
+	color: #999;
+}
+
+div.code-coverage-results div.covered:hover {
+	background: rgba(65, 187, 25, 0.50);
+}
+div.code-coverage-results div.uncovered:hover {
+	background: rgba(245, 15, 67, 0.50);
+}
+
+div.code-coverage-results span.line-num {
+	display: block;
+	float: left;
+	width: 36px;
+	text-align: right;
+	margin-right: 8px;
+}
+
+/***** Test Suite Footer *****/
+
+.phpunit-version {
+	margin: 1.5em;
+	text-align: center;
+}
+
+td.sql-query {
+	font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+	line-height: 1.4;
+	padding: 7px 5px 4px 5px;
+}

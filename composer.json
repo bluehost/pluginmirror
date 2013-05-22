@@ -1,0 +1,52 @@
+{
+	"name": "bluehost/pluginmirror",
+	"homepage": "http://www.pluginmirror.com/",
+	"description": "Provides a fully automated git-svn mirror of any plugins hosted on WordPress.org.",
+	"keywords": ["wordpress", "plugin", "github", "mirror", "git-svn"],
+	"license": "GPL-2.0+",
+	"authors": [
+		{
+			"name": "Bryan Petty",
+			"email": "bryan@ibaku.net"
+		}
+	],
+	"repositories": [
+		{
+			"type": "package",
+			"package": {
+				"name": "cakephp/cakephp",
+				"version": "dev-pluginmirror",
+				"type": "cakephp-plugin",
+				"description": "The Rapid Development Framework for PHP",
+				"keywords": [ "cakephp", "framework" ],
+				"homepage": "http://cakephp.org/",
+				"license": "MIT",
+				"support": {
+					"issues": "https://cakephp.lighthouseapp.com",
+					"source": "https://github.com/cakephp/cakephp"
+				},
+				"require": {
+					"php": ">=5.3.0",
+					"composer/installers": "*"
+				},
+				"source": {
+					"url": "https://github.com/cakephp/cakephp.git",
+					"type": "git",
+					"reference": "a079ca3f1c79a36d9d1552679d148bd75920e123"
+				}
+			}
+		}
+	],
+	"require": {
+		"knplabs/github-api": "*",
+		"cakephp/cakephp": "dev-pluginmirror",
+		"cakephp/debug_kit": "~2.2.0"
+	},
+	"minimum-stability": "dev",
+	"extra": {
+		"installer-paths": {
+			"app/Plugin/DebugKit": [ "cakephp/debug_kit" ],
+			"cakephp": [ "cakephp/cakephp" ]
+		}
+	}
+}

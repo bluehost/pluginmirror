@@ -1,0 +1,195 @@
+/**
+ * Application-specific styles.
+ *
+ * @copyright     Copyright 2013 Bluehost (http://www.bluehost.com/)
+ * @package       app.webroot.css
+ * @license       GNU General Public License (http://www.gnu.org/licenses/gpl-2.0.txt)
+ */
+
+ul, ol, dl {
+	margin-left: 0.50em;
+	list-style-position: inside;
+}
+
+/* Font Awesome: add "icon" prefix to pull-* classes. */
+.icon-pull-right {
+	float: right;
+	margin-left: .3em;
+}
+.icon-pull-left {
+	float: left;
+	margin-right: .3em;
+}
+/* fix for icon spin animation in (button) links */
+a [class^="icon-"], a [class*=" icon-"],
+a [class^="icon-"]:before, a [class*=" icon-"]:before {
+	display: inline-block;
+}
+
+.top-bar ul {
+	margin-left: 0;
+}
+
+.top-bar-section ul li>a:hover, .top-bar-section ul li>a:focus {
+	color: #2795b6;
+}
+
+.panel .lead {
+	padding: 0.5em;
+}
+
+blockquote.guide {
+	padding: 0.8em 1em;
+	background: #f2f2f2;
+	border: 1px solid #d9d9d9;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+blockquote.guide p {
+	margin: 0;
+}
+blockquote.guide cite {
+	color: #999;
+}
+
+.no-bottom-padding {
+	padding-bottom: 0.25em;
+}
+
+ul.sidebar-details {
+	margin: 0 0 1.25em 0;
+	padding: 0 0 0.5em 0;
+	list-style-type: none;
+	background: #eeeeee;
+}
+ul.sidebar-details li {
+	margin: 0.0em 1em;
+	font-size: 0.875em;
+}
+ul.sidebar-details li.header {
+	margin: 0.5em 0;
+	padding: 8px 16px;
+	background: #dfdfdf;
+	color: #999;
+	font-size: 0.8125em;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+}
+
+/* Custom alert-box styles. */
+.alert-box {
+	line-height: 125%;
+}
+.alert-box h4 {
+	margin-top: 0;
+	margin-bottom: 0.3em;
+	color: white;
+}
+.alert-box.warning {
+	background-color: #ff6c3c;
+	border-color: #ff4609;
+}
+
+legend {
+	margin: 1em 1em 0.5em;
+	line-height: 1;
+}
+
+.pagination-centered {
+	margin: 2em 0;
+}
+.pagination-centered p {
+	color: #555;
+	font-size: 0.875em;
+}
+.pagination ul {
+	margin: 0;
+	margin-bottom: 0.6em;
+}
+.pagination li a {
+	padding: 0.2em 0.6em;
+	color: #555;
+	background: #e6e6e6;
+}
+.pagination li a:hover, .pagination li a:active {
+	color: #fff;
+	background: #333;
+}
+.pagination li.unavailable a {
+	color: #999;
+	background: none;
+}
+
+footer {
+	margin: 1.5em 0;
+	text-align: center;
+}
+
+.clearfix {
+	*zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+	display: table;
+	line-height: 0;
+	content: "";
+}
+.clearfix:after {
+	clear: both;
+}
+
+
+/* Preformatted Code Styles */
+
+code, pre {
+	padding: 0 3px 2px;
+	font-family: Consolas, "Liberation Mono", Courier, monospace;
+	font-weight: normal;
+	font-size: 13px;
+	color: #444;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+code {
+	padding: 3px 4px 0px;
+	vertical-align: 5%;
+	color: #444;
+	white-space: nowrap;
+	background-color: #f2f2f2;
+	border: 1px solid #ccc;
+}
+pre {
+	display: block;
+	padding: 0.5em 0.5em 0.4em 0.5em;
+	margin: 0.5em 0 1.25em;
+	font-size: 13px;
+	line-height: 20px;
+	word-break: break-all;
+	word-wrap: break-word;
+	white-space: pre;
+	white-space: pre-wrap;
+	background-color: #f2f2f2;
+	border: 1px solid #ccc;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+pre code {
+	padding: 0;
+	color: inherit;
+	white-space: pre;
+	white-space: pre-wrap;
+	background-color: transparent;
+	border: 0;
+}
+.scrollable {
+	max-height: 340px;
+	overflow-y: scroll;
+}
+@media print {
+	pre {
+		page-break-inside: avoid;
+	}
+}

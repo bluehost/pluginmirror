@@ -1,0 +1,25 @@
+# PluginMirror Configuration Files
+/app/Config/production.php
+/app/Config/database.php
+
+# API Documentation and Package Builds
+/build/
+
+# Composer
+/composer.phar
+/vendor/
+
+# External CakePHP Resources (see Composer)
+/cakephp/
+/app/Plugin/DebugKit/
+
+# PhpStorm
+/.idea/
+
+# NetBeans
+/nbproject/
+
+# Eclipse / Zend Studio
+/.settings/
+/.buildpath
+/.project

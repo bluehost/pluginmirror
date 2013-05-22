@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--suppress XmlUnboundNsPrefix -->
+<project name="Plugin Mirror" default="docs" basedir=".">
+	<target name="docs">
+		<apigen source="app"
+			destination="build/docs"
+			title="Plugin Mirror"
+			exclude="*/app/Plugin/*"
+			deprecated="true"
+			todo="true"
+		/>
+	</target>
+</project>

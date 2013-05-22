@@ -1,0 +1,20 @@
+<?php
+/**
+ * Application core configuration overrides for production use.
+ *
+ * Copy this file to production.php, and configure these settings. Some settings
+ * are required for specific application functionality to work.
+ *
+ * @copyright     Copyright 2013 Bluehost (http://www.bluehost.com/)
+ * @package       app.Config
+ * @license       GNU General Public License (http://www.gnu.org/licenses/gpl-2.0.txt)
+ */
+
+define('APP_DEBUG', 0);
+define('APP_CACHE_DISABLE', false);
+define('APP_CACHE_CHECK', true);
+define('APP_SECURITY_SALT', ''); // 40-character alpha-numeric salt
+define('APP_SECURITY_CIPHERSEED', ''); // 30-digit seed
+
+define('GITHUB_USERNAME', '');
+define('GITHUB_PASSWORD', '');

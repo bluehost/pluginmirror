@@ -1,0 +1,6 @@
+*
+!.gitignore
+!logs/
+!sessions/
+!cache/
+!tests/
