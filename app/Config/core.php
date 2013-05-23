@@ -42,7 +42,7 @@ Configure::write('App.plugin_api_url', 'http://api.wordpress.org/plugins/info/1.
 Configure::write('App.plugin_app_url', 'http://www.pluginmirror.com/plugins/%s/');
 Configure::write('App.plugin_git_url', 'git@github.com:wp-plugins/%s.git');
 Configure::write('App.plugin_github_url', 'https://github.com/wp-plugins/%s/');
-Configure::write('App.plugin_http_url', 'http://wordpress.org/extend/plugins/%s/');
+Configure::write('App.plugin_http_url', 'http://wordpress.org/plugins/%s/');
 Configure::write('App.plugin_svn_url', 'https://plugins.svn.wordpress.org/%s/');
 Configure::write('App.plugin_trac_url', 'http://plugins.trac.wordpress.org/browser/%s/');
 
