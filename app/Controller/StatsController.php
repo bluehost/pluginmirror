@@ -32,7 +32,7 @@ class StatsController extends AppController
 				'total', 'cloned', 'cloning', 'refreshing',
 				'removed', 'updating', 'created_iso8601'
 			),
-			'order' => array('Stat.created DESC')
+			'order' => array('Stat.created' => 'DESC')
 		),
 	);
 
