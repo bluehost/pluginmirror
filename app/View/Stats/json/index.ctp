@@ -24,4 +24,6 @@ foreach ($stats as &$stat) {
 	);
 }
 
+$data = array_reverse($data);
+
 echo json_encode($data);
