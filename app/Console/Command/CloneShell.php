@@ -93,7 +93,7 @@ class CloneShell extends AppShell {
 			              $plugin['Plugin']['slug'],
 			              $plugin['Plugin']['id']));
 
-			$svn_url = 'file://' . TMP . 'contact-form-7/contact-form-7';
+			$svn_url = sprintf(Configure::read('App.plugin_svn_url'), $plugin['Plugin']['slug']);
 			$git_path = TMP . 'git' . DS . $plugin['Plugin']['slug'];
 			$log_path = TMP . 'logs' . DS . 'git' . DS . $plugin['Plugin']['slug'] . '.log';
 
