@@ -94,7 +94,7 @@ class CloneShell extends AppShell {
 			              $plugin['Plugin']['id']));
 
 			$svn_url = sprintf(Configure::read('App.plugin_svn_url'), $plugin['Plugin']['slug']);
-			$git_path = TMP . 'git' . DS . $plugin['Plugin']['slug'];
+			$git_path = sprintf(Configure::read('App.plugin_repo_path'), $plugin['Plugin']['slug']);
 			$log_path = TMP . 'logs' . DS . 'git' . DS . $plugin['Plugin']['slug'] . '.log';
 
 			// Clear out any existing git-svn clone attempt that failed before.
@@ -104,7 +104,7 @@ class CloneShell extends AppShell {
 			try
 			{
 				$this->_exec(
-					'git svn clone -qq -r 360:380 --prefix=svn/ -s %s %s >> %s 2>&1',
+					'git svn clone -qq --prefix=svn/ -s %s %s >> %s 2>&1',
 					$svn_url, $git_path, $log_path
 				);
 			}
@@ -172,7 +172,8 @@ class CloneShell extends AppShell {
 		} catch(Exception $exception) {
 			$this->out(__('<warning>Failed to create GitHub repository for "%s": %s</warning>',
 			              $repo, $exception->getMessage()));
-			return false;
+			// TODO: Return false properly on failure (temp fix).
+			return true;
 		}
 
 		return true;

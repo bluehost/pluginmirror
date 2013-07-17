@@ -74,7 +74,7 @@ class UpdateShell extends AppShell {
 			              $plugin['Plugin']['slug'],
 			              $plugin['Plugin']['id']));
 
-			$git_path = TMP . 'git' . DS . $plugin['Plugin']['slug'];
+			$git_path = sprintf(Configure::read('App.plugin_repo_path'), $plugin['Plugin']['slug']);
 			$log_path = TMP . 'logs' . DS . 'git' . DS . $plugin['Plugin']['slug'] . '.log';
 
 			if(!chdir($git_path)) {

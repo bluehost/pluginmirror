@@ -40,6 +40,7 @@ Configure::write('App.max_cloning_per_ip', 4);
 
 Configure::write('App.plugin_api_url', 'http://api.wordpress.org/plugins/info/1.0/%s.json');
 Configure::write('App.plugin_app_url', 'http://www.pluginmirror.com/plugins/%s/');
+Configure::write('App.plugin_repo_path', '/home/pluginmirror/disk/repos/%s');
 Configure::write('App.plugin_git_url', 'git@github.com:wp-plugins/%s.git');
 Configure::write('App.plugin_github_url', 'https://github.com/wp-plugins/%s/');
 Configure::write('App.plugin_http_url', 'http://wordpress.org/plugins/%s/');
