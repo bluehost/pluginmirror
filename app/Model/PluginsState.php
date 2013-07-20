@@ -84,4 +84,23 @@ class PluginsState extends AppModel
 		return $plugin_state;
 	}
 
+	/**
+	 * Returns the number of plugins with the given state.
+	 *
+	 * @param string $state_name Name of the state.
+	 *
+	 * @return int
+	 */
+	public function count($state_name)
+	{
+		$this->recursive = -1;
+		$count = $this->find('count', array(
+			'conditions' => array(
+				'state_id' => $this->State->getIdByName($state_name),
+			),
+		));
+
+		return $count;
+	}
+
 }

@@ -96,7 +96,7 @@ class Plugin extends AppModel
 	}
 
 	/**
-	 * Find all plugins with exactly the states provided.
+	 * Find all plugins with all of the states provided.
 	 *
 	 * @param string|array $states State name or array of states to search for.
 	 * @param array        $query Additional find conditions.

@@ -36,6 +36,25 @@ class CloneShell extends AppShell {
 		$parser = parent::getOptionParser();
 		$parser->description(__('Performs the initial git-svn clone of plugins.'));
 		$parser->addArgument('max', array('help' => __('Maximum number of plugins to clone.')));
+		$parser->addSubcommand('queue', array(
+			'help' => __('Queues a plugin to clone if not already busy.'),
+			'parser' => array(
+				'description' => array(
+					__('Keeps the cloning queue busy if there haven\'t been'),
+					__('any plugins requested to be cloned.'),
+					'',
+					__('If the cloning queue is less than the count given,'),
+					__('one plugin will be added to the queue in preference'),
+					__('of the latest updated or added first.')
+				),
+				'arguments' => array(
+					'min' => array(
+						'help' => __('Minimum number of queued plugins.'),
+						'required' => false,
+					),
+				),
+			),
+		));
 		return $parser;
 	}
 
@@ -177,6 +196,59 @@ class CloneShell extends AppShell {
 		}
 
 		return true;
+	}
+
+	/**
+	 * Keeps the cloning queue busy if there haven't been any plugins
+	 * requested to be cloned.
+	 *
+	 * If the cloning queue is less than the count given, one plugin will be
+	 * added to the queue in preference of the latest updated or added first.
+	 *
+	 * By default, this keeps at least 3 plugins in the queue at all times.
+	 *
+	 * @return int Shell return code.
+	 */
+	function queue()
+	{
+		$min = 3;
+		if(isset($this->args[0]) && is_numeric($this->args[0]) && $this->args[0] > 0) {
+			$min = (int) $this->args[0];
+		}
+
+		$count = $this->PluginsState->count('cloning');
+		if($count >= $min) {
+			$this->out(__('<info>There are already %d plugins in the cloning queue.</info>', $count));
+			return 0;
+		}
+
+		$cloning_plugins = $this->Plugin->findByState(
+			'cloning', array('fields' => array('id')));
+		$cloning_plugins = Hash::extract($cloning_plugins, '{n}.Plugin.id');
+
+		$cloned_plugins = $this->Plugin->findByState(
+			'cloned', array('fields' => array('id')));
+		$cloned_plugins = Hash::extract($cloned_plugins, '{n}.Plugin.id');
+
+		$all_plugins = $this->Plugin->find('list', array(
+			'fields' => array('id', 'slug'),
+			'order' => 'Plugin.wp_updated DESC',
+		));
+
+		$uncloned = array_diff(array_keys($all_plugins),
+		                       $cloned_plugins, $cloning_plugins);
+
+		if(empty($uncloned)) {
+			$this->out(__('<info>No plugins need to be cloned.</info>', $count));
+			return 0;
+		}
+
+		$plugin = array_shift($uncloned);
+		$this->PluginsState->findOrCreate($plugin, 'cloning');
+
+		$this->out(__('<info>Added "%s" (%d) to the cloning queue.</info>',
+		              $all_plugins[$plugin], $plugin));
+		return 0;
 	}
 
 }
