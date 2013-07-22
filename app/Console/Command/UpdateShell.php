@@ -145,12 +145,22 @@ class UpdateShell extends AppShell {
 	{
 		$svn_url = sprintf(Configure::read('App.plugin_svn_url'), $plugin_slug);
 
-		try {
-			$branches = $this->_exec(
-				'svn list %s | grep --only-matching --extended-regexp "[^/]*"',
-				$svn_url . 'branches'
+		$branches = array();
+
+		try
+		{
+			$xml_list = $this->_exec(
+				'svn list --xml %s', $svn_url . 'branches'
 			);
-		} catch(RuntimeException $e) {
+			$data = Xml::build(implode('', $xml_list));
+			foreach($data->list->entry as $path) {
+				if($path['kind'] != 'dir')
+					continue;
+				$branches[] = $path->name;
+			}
+		}
+		catch(Exception $e)
+		{
 			return array();
 		}
 
