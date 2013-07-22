@@ -191,8 +191,7 @@ class CloneShell extends AppShell {
 		} catch(Exception $exception) {
 			$this->out(__('<warning>Failed to create GitHub repository for "%s": %s</warning>',
 			              $repo, $exception->getMessage()));
-			// TODO: Return false properly on failure (temp fix).
-			return true;
+			return false;
 		}
 
 		return true;

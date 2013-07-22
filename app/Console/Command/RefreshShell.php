@@ -72,8 +72,7 @@ class RefreshShell extends AppShell {
 				'Tag',
 			),
 			'conditions' => array(
-				// TODO: Re-enable once site is live.
-				//'PluginsState.modified <' => date('Y-m-d H:i:s', strtotime('1 hour ago')),
+				'PluginsState.modified <' => date('Y-m-d H:i:s', strtotime('1 hour ago')),
 			),
 			'order' => array('InnerPluginsState.modified'),
 			'limit' => $max,
