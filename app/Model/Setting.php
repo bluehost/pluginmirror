@@ -122,7 +122,7 @@ class Setting extends AppModel
 	 *
 	 * @return array Unserialized setting data.
 	 */
-	function afterFind($results, $primary)
+	function afterFind($results, $primary = false)
 	{
 		if($primary) {
 			foreach($results as &$result) {
@@ -142,7 +142,7 @@ class Setting extends AppModel
 	 * @return bool Always returns true to continue saving regardless of whether
 	 *              it found data that needed to be serialized or not.
 	 */
-	function beforeSave($options)
+	function beforeSave($options = array())
 	{
 		if(!empty($this->data['Setting']['value'])) {
 			$this->data['Setting']['value'] = serialize($this->data['Setting']['value']);
