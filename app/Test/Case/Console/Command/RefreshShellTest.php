@@ -15,6 +15,8 @@ App::uses('RefreshShell', 'Console/Command');
  * Refresh console shell unit tests.
  *
  * @package app.Test.Case.Console.Command
+ *
+ * @property RefreshShell $shell
  */
 class RefreshShellTest extends CakeTestCase
 {
@@ -49,6 +51,12 @@ class RefreshShellTest extends CakeTestCase
 	{
 		$this->assertIdentical($this->shell->main(), null,
 		                       __('Refresh shell failed.'));
+	}
+
+	public function testQueue()
+	{
+		$this->assertIdentical($this->shell->queue(), null,
+		                       __('Refresh queue shell failed.'));
 	}
 
 }

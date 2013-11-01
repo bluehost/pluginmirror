@@ -28,8 +28,6 @@ class RefreshShell extends AppShell {
 		'Tag',
 	);
 
-	public $locked_commands = array('main');
-
 	/**
 	 * Gets the option parser instance and configures it.
 	 *
@@ -39,6 +37,20 @@ class RefreshShell extends AppShell {
 		$parser = parent::getOptionParser();
 		$parser->description(__('Refreshes plugin information with current details from WordPress.org.'));
 		$parser->addArgument('max', array('help' => __('Maximum number of plugins to refresh.')));
+		$parser->addSubcommand('queue', array(
+			'help' => __('Queues plugins for a refresh if they have stale data.'),
+			'parser' => array(
+				'description' => array(
+					__('All plugins with data older than the given number of days is added to the refresh queue.')
+				),
+				'arguments' => array(
+					'days' => array(
+						'help' => __('Number of days old plugin data can be before being queued for a refresh.'),
+						'required' => false,
+					),
+				),
+			),
+		));
 		return $parser;
 	}
 
@@ -217,6 +229,30 @@ class RefreshShell extends AppShell {
 
 		$this->_unlock();
 		return 0;
+	}
+
+	/**
+	 * Queues plugins for a refresh if they have stale data.
+	 *
+	 * All plugins with data older than the given number of days are added to
+	 * the refresh queue.
+	 *
+	 * @return int Shell return code.
+	 */
+	function queue()
+	{
+		$max = 14;
+		if(isset($this->args[0]) && is_numeric($this->args[0]) && $this->args[0] > 0) {
+			$max = (int) $this->args[0];
+		}
+
+		$plugins = $this->Plugin->find('list', array(
+			'fields' => array('id', 'modified'),
+			'conditions' => array(
+				'modified <' => date('Y-m-d H:i:s', strtotime("$max days ago")),
+			),
+			'order' => array('modified'),
+		));
 	}
 
 }

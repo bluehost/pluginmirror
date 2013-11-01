@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "e55aaa7403a3796a6edc4eec98861409",
+    "hash": "79750a77eac114661ef7f3b8763293e3",
     "packages": [
         {
             "name": "cakephp/cakephp",
@@ -11,7 +11,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cakephp.git",
-                "reference": "a079ca3f1c79a36d9d1552679d148bd75920e123"
+                "reference": "2.3.10"
             },
             "require": {
                 "composer/installers": "*",
@@ -31,7 +31,7 @@
                 "issues": "https://cakephp.lighthouseapp.com",
                 "source": "https://github.com/cakephp/cakephp"
             },
-            "time": "2013-05-11 00:56:56"
+            "time": "2013-08-30 19:56:44"
         },
         {
             "name": "cakephp/debug_kit",
@@ -39,12 +39,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/debug_kit.git",
-                "reference": "877977dfe72bcbb8be5ae63e0826f2f614acc2d8"
+                "reference": "e2b6013d83436b41ac50464b0bcd0d234859f7ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/877977dfe72bcbb8be5ae63e0826f2f614acc2d8",
-                "reference": "877977dfe72bcbb8be5ae63e0826f2f614acc2d8",
+                "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/e2b6013d83436b41ac50464b0bcd0d234859f7ba",
+                "reference": "e2b6013d83436b41ac50464b0bcd0d234859f7ba",
                 "shasum": ""
             },
             "require": {
@@ -55,7 +55,8 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.2.x-dev"
-                }
+                },
+                "installer-name": "DebugKit"
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -79,7 +80,7 @@
                 "debug",
                 "kit"
             ],
-            "time": "2013-05-10 15:47:49"
+            "time": "2013-10-11 14:10:06"
         },
         {
             "name": "composer/installers",
@@ -87,12 +88,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "48a6227dfac4e51233a2fae5d5085db9655209f0"
+                "reference": "46085247845046fadfdbf1b3d8ac851fa90a48d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/48a6227dfac4e51233a2fae5d5085db9655209f0",
-                "reference": "48a6227dfac4e51233a2fae5d5085db9655209f0",
+                "url": "https://api.github.com/repos/composer/installers/zipball/46085247845046fadfdbf1b3d8ac851fa90a48d5",
+                "reference": "46085247845046fadfdbf1b3d8ac851fa90a48d5",
                 "shasum": ""
             },
             "replace": {
@@ -129,6 +130,7 @@
             "description": "A multi-framework Composer library installer",
             "homepage": "http://composer.github.com/installers/",
             "keywords": [
+                "TYPO3 CMS",
                 "TYPO3 Flow",
                 "TYPO3 Neos",
                 "agl",
@@ -143,6 +145,7 @@
                 "li3",
                 "lithium",
                 "mako",
+                "modulework",
                 "phpbb",
                 "ppi",
                 "silverstripe",
@@ -150,7 +153,7 @@
                 "wordpress",
                 "zend"
             ],
-            "time": "2013-05-07 19:50:30"
+            "time": "2013-10-11 03:22:56"
         },
         {
             "name": "knplabs/github-api",
@@ -158,12 +161,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/php-github-api.git",
-                "reference": "8eafe2ec512a0cbcdf5accc85f6a8cf01df787a2"
+                "reference": "3787a1b87cf9d8549dc33b5b73a5d09f23a91ea2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/php-github-api/zipball/8eafe2ec512a0cbcdf5accc85f6a8cf01df787a2",
-                "reference": "8eafe2ec512a0cbcdf5accc85f6a8cf01df787a2",
+                "url": "https://api.github.com/repos/KnpLabs/php-github-api/zipball/3787a1b87cf9d8549dc33b5b73a5d09f23a91ea2",
+                "reference": "3787a1b87cf9d8549dc33b5b73a5d09f23a91ea2",
                 "shasum": ""
             },
             "require": {
@@ -205,7 +208,7 @@
                 "gist",
                 "github"
             ],
-            "time": "2013-04-01 07:38:45"
+            "time": "2013-09-24 10:40:31"
         },
         {
             "name": "kriswallsmith/buzz",
@@ -213,12 +216,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kriswallsmith/Buzz.git",
-                "reference": "759432d66387e3433d3b06cb6f773b97225b9b17"
+                "reference": "805272acb603161f0bc92380bbd801d5ffabf89d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kriswallsmith/Buzz/zipball/759432d66387e3433d3b06cb6f773b97225b9b17",
-                "reference": "759432d66387e3433d3b06cb6f773b97225b9b17",
+                "url": "https://api.github.com/repos/kriswallsmith/Buzz/zipball/805272acb603161f0bc92380bbd801d5ffabf89d",
+                "reference": "805272acb603161f0bc92380bbd801d5ffabf89d",
                 "shasum": ""
             },
             "require": {
@@ -253,7 +256,7 @@
                 "curl",
                 "http client"
             ],
-            "time": "2013-05-19 03:41:15"
+            "time": "2013-09-12 13:09:33"
         }
     ],
     "packages-dev": [

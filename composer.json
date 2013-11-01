@@ -32,7 +32,7 @@
 				"source": {
 					"url": "https://github.com/cakephp/cakephp.git",
 					"type": "git",
-					"reference": "a079ca3f1c79a36d9d1552679d148bd75920e123"
+					"reference": "2.3.10"
 				}
 			}
 		}
