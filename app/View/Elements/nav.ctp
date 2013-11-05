@@ -19,10 +19,6 @@
 		<li><?php echo $this->Html->link(__('Plugins'), array('controller' => 'plugins', 'action' => 'index')); ?></li>
 		<li class="divider"></li>
 		<li><?php echo $this->Html->link(__('Status'), array('controller' => 'stats', 'action' => 'index')); ?></li>
-		<li class="divider"></li>
-		<li><?php echo $this->Html->link(__('About'), array('controller' => 'pages', 'action' => 'display', 'about')); ?></li>
-		<li class="divider"></li>
-		<li><?php echo $this->Html->link(__('Contact'), array('controller' => 'pages', 'action' => 'display', 'contact')); ?></li>
 	</ul>
 	<ul class="right">
 		<li class="has-form">

@@ -63,6 +63,6 @@ $this->extend('/Common/sidebar');
 			array('controller' => 'pages', 'action' => 'display', 'add-new-guide'),
 			array('icon' => 'plus-circle fw')); ?>
 		- How are you using the plugin mirror?
-		<cite>Published in April 2013 by Bryan Petty</cite>
+		<cite>Published in November 2013 by Bryan Petty</cite>
 	</p>
 </blockquote>
