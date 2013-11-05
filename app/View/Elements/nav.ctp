@@ -24,4 +24,16 @@
 		<li class="divider"></li>
 		<li><?php echo $this->Html->link(__('Contact'), array('controller' => 'pages', 'action' => 'display', 'contact')); ?></li>
 	</ul>
+	<ul class="right">
+		<li class="has-form">
+			<form role="search" action="http://google.com/search">
+				<div class="row collapse">
+					<div class="small-12 columns">
+						<input type="hidden" name="q" value="site:pluginmirror.com" />
+						<input type="text" placeholder="Search" name="q" results="0">
+					</div>
+				</div>
+			</form>
+		</li>
+	</ul>
 </section>

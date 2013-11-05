@@ -77,27 +77,12 @@ echo $this->Html->script(
 				name: 'Refreshing',
 				color: 'rgba(215, 249, 34, 1)',
 				data: []
-			}, {
-				name: 'Removed',
-				color: 'rgba(240, 100, 100, 1)',
-				data: []
-			}, {
-				name: 'Cloned',
-				color: 'rgba(33, 180, 89, 1)',
-				data: []
-			}, {
-				name: 'Total',
-				color: 'rgba(208, 198, 177, 1)',
-				data: []
 			} ];
 			for(var i = 0; i < data.length; i++) {
 				var date = Date.parse(data[i][6]) / 1000;
 				result[0].data.push({ x: date, y: data[i][0] });
 				result[1].data.push({ x: date, y: data[i][1] });
 				result[2].data.push({ x: date, y: data[i][2] });
-				result[3].data.push({ x: date, y: data[i][3] });
-				result[4].data.push({ x: date, y: data[i][4] });
-				result[5].data.push({ x: date, y: data[i][5] });
 			}
 			return result;
 		},
