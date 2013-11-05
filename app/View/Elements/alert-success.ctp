@@ -9,7 +9,7 @@
 
 $data = array(
 	'class' => 'success',
-	'icon' => 'ok',
+	'icon' => 'check',
 	'title' => 'Success!',
 );
 

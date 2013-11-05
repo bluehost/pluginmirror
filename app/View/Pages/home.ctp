@@ -31,14 +31,14 @@ $this->extend('/Common/sidebar');
 					<?php
 					echo $this->Html->link(__('Browse Plugins'),
 						array('controller' => 'plugins', 'action' => 'index'),
-						array('class' => 'button expand radius', 'icon' => 'list large'));
+						array('class' => 'button expand radius', 'icon' => 'list-alt lg fw'));
 					?>
 				</div>
 				<div class="large-6 columns">
 					<?php
-					echo $this->Html->link(__('How It Works'),
-						array('controller' => 'plugins', 'action' => 'index'),
-						array('class' => 'button expand radius', 'icon' => 'info-sign large'));
+					echo $this->Html->link(__('Get Involved'),
+						'https://github.com/bluehost/pluginmirror',
+						array('class' => 'button expand radius secondary', 'icon' => 'github lg fw'));
 					?>
 				</div>
 			</div>
@@ -47,15 +47,6 @@ $this->extend('/Common/sidebar');
 </div>
 
 <h2>Guides</h2>
-
-<blockquote class="guide">
-	<p>
-		<?php echo $this->Html->link(__('Automatic Plugin Updates'), array(
-			'controller' => 'pages', 'action' => 'display', 'automatic-plugin-updates')); ?>
-		- Managing plugins using Composer.
-		<cite>Published in April 2013 by Bryan Petty</cite>
-	</p>
-</blockquote>
 
 <blockquote class="guide">
 	<p>
@@ -70,7 +61,7 @@ $this->extend('/Common/sidebar');
 	<p>
 		<?php echo $this->Html->link(__('Add New Guide'),
 			array('controller' => 'pages', 'action' => 'display', 'add-new-guide'),
-			array('icon' => 'plus-sign')); ?>
+			array('icon' => 'plus-circle fw')); ?>
 		- How are you using the plugin mirror?
 		<cite>Published in April 2013 by Bryan Petty</cite>
 	</p>

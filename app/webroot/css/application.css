@@ -12,18 +12,13 @@ ul, ol, dl {
 }
 
 /* Font Awesome: add "icon" prefix to pull-* classes. */
-.icon-pull-right {
+.fa-pull-right {
 	float: right;
 	margin-left: .3em;
 }
-.icon-pull-left {
+.fa-pull-left {
 	float: left;
 	margin-right: .3em;
-}
-/* fix for icon spin animation in (button) links */
-a [class^="icon-"], a [class*=" icon-"],
-a [class^="icon-"]:before, a [class*=" icon-"]:before {
-	display: inline-block;
 }
 
 .top-bar ul {

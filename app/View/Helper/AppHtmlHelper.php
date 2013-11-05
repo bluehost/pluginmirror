@@ -30,11 +30,12 @@ class AppHtmlHelper extends HtmlHelper
 		$class = explode(' ', $class);
 		foreach ($class as &$_class) {
 			if ($_class) {
-				$_class = 'icon-' . $_class;
+				$_class = 'fa-' . $_class;
 			} else {
 				unset($_class);
 			}
 		}
+		array_unshift($class, 'fa');
 		return $this->tag('i', '', array('class' => implode(' ', $class)));
 	}
 

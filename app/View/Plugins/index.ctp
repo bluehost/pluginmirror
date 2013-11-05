@@ -47,14 +47,14 @@
 					if(in_array('cloned', Hash::extract($plugin, 'PluginsState.{n}.State.name'))) {
 						echo $this->Html->link(__('GitHub Mirror'),
 							sprintf(Configure::read('App.plugin_github_url'), $plugin['Plugin']['slug']),
-							array('class' => 'button expand success radius', 'icon' => 'github'));
+							array('class' => 'button expand success radius', 'icon' => 'github fw'));
 					} else if(in_array('cloning', Hash::extract($plugin, 'PluginsState.{n}.State.name'))) {
 						echo $this->Html->link(__('Cloning'), 'javascript:void(0);',
-							array('class' => 'button expand radius disabled', 'icon' => 'refresh spin'));
+							array('class' => 'button expand radius disabled', 'icon' => 'refresh spin fw'));
 					} else {
 						echo $this->Html->link(__('Clone'),
 							array('action' => 'mirror', 'slug' => $plugin['Plugin']['slug']),
-							array('class' => 'button expand radius', 'icon' => 'refresh'));
+							array('class' => 'button expand radius', 'icon' => 'refresh fw'));
 					}
 					if(!empty($plugin['Plugin']['wp_updated'])) {
 						echo $this->Html->tag('p', sprintf('%s<br>%s',

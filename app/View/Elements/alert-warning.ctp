@@ -9,7 +9,7 @@
 
 $data = array(
 	'class' => 'warning',
-	'icon' => 'warning-sign',
+	'icon' => 'exclamation-triangle',
 	'title' => 'Warning!',
 );
 

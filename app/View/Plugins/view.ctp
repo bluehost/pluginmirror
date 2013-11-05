@@ -36,14 +36,14 @@
 		if(in_array('cloned', Hash::extract($plugin, 'PluginsState.{n}.State.name'))) {
 			echo $this->Html->link(__('GitHub Mirror'),
 				sprintf(Configure::read('App.plugin_github_url'), $plugin['Plugin']['slug']),
-				array('class' => 'button large expand success radius', 'icon' => 'github large'));
+				array('class' => 'button large expand success radius', 'icon' => 'github large fw'));
 		} else if(in_array('cloning', Hash::extract($plugin, 'PluginsState.{n}.State.name'))) {
 			echo $this->Html->link(__('Cloning'), 'javascript:void(0);',
-				array('class' => 'button large expand disabled radius', 'icon' => 'refresh large spin'));
+				array('class' => 'button large expand disabled radius', 'icon' => 'refresh large spin fw'));
 		} else {
 			echo $this->Html->link(__('Clone'),
 				array('action' => 'mirror', 'slug' => $plugin['Plugin']['slug']),
-				array('class' => 'button large expand radius', 'icon' => 'refresh large'));
+				array('class' => 'button large expand radius', 'icon' => 'refresh large fw'));
 		}
 		?>
 		<ul class="sidebar-details">
