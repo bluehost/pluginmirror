@@ -49,13 +49,13 @@ class RefreshShellTest extends CakeTestCase
 
 	public function testMain()
 	{
-		$this->assertIdentical($this->shell->main(), null,
+		$this->assertIdentical($this->shell->main(), 0,
 		                       __('Refresh shell failed.'));
 	}
 
 	public function testQueue()
 	{
-		$this->assertIdentical($this->shell->queue(), null,
+		$this->assertIdentical($this->shell->queue(), 0,
 		                       __('Refresh queue shell failed.'));
 	}
 

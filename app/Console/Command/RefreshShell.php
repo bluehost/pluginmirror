@@ -151,6 +151,16 @@ class RefreshShell extends AppShell {
 				continue;
 			}
 
+			// Clear the removed state of any plugins that are no longer missing.
+			foreach($plugin['PluginsState'] as $state) {
+				if($state['State']['name'] == 'removed') {
+					if(!$this->PluginsState->delete($state['id'])) {
+						$this->out(__('<warning>Failed clearing removed state: %s (%d).</warning>',
+						              $plugin['Plugin']['slug'], $plugin['Plugin']['id']));
+					}
+				}
+			}
+
 			$plugin['Plugin']['name'] = $data['name'];
 			$plugin['Plugin']['version'] = $data['version'];
 			$plugin['Plugin']['requires'] = $data['requires'];
@@ -253,6 +263,20 @@ class RefreshShell extends AppShell {
 			),
 			'order' => array('modified'),
 		));
+
+		if(count($plugins) == 0) {
+			$this->out(__('<info>No plugins need to be refreshed.</info>'));
+			return 0;
+		}
+
+		$this->out(__('Marking %d plugins for refresh...', count($plugins)));
+
+		foreach($plugins as $plugin_id => $modified) {
+			$this->PluginsState->findOrCreate($plugin_id, 'refreshing');
+		}
+
+		$this->out(__('<info>Finished queuing stale plugins for refresh.</info>'));
+		return 0;
 	}
 
 }
