@@ -44,6 +44,7 @@ Configure::write('App.plugin_repo_path', '/home/pluginmirror/disk/repos/%s');
 Configure::write('App.plugin_git_url', 'git@github.com:wp-plugins/%s.git');
 Configure::write('App.plugin_github_url', 'https://github.com/wp-plugins/%s/');
 Configure::write('App.plugin_http_url', 'http://wordpress.org/plugins/%s/');
+Configure::write('App.plugin_support_url', 'http://wordpress.org/support/plugin/%s/');
 Configure::write('App.plugin_svn_url', 'https://plugins.svn.wordpress.org/%s/');
 Configure::write('App.plugin_trac_url', 'http://plugins.trac.wordpress.org/browser/%s/');
 
