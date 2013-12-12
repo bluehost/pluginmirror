@@ -177,39 +177,23 @@ class RefreshShell extends AppShell {
 			}
 
 			$plugin['Contributor'] = array();
-			foreach($data['contributors'] as $name => $url) {
-				// Only save real wp.org usernames.
-				if(!preg_match('/profiles\.wordpress\.org/', $url))
-					continue;
-				$record = $this->Contributor->findByName($name);
-				if(!$record) {
-					$this->Contributor->create(array('name' => $name));
-					$record = $this->Contributor->save();
-				}
-				$record['Contributor']['ContributorsPlugin'] = array(
-					'contributor_id' => $record['Contributor']['id'],
-					'plugin_id' => $plugin['Plugin']['id'],
-				);
-				$plugin['Contributor'][] = $record['Contributor'];
+			try {
+				$plugin['Contributor'] = $this->_saveContributors($plugin, $data);
+			} catch(CakeException $exception) {
+				$this->out(__('<warning>Failed to save contributors for "%s" (%d): %s</warning>',
+				              $plugin['Plugin']['slug'], $plugin['Plugin']['id'], $exception->getMessage()));
+				$this->PluginsState->touch($plugin['InnerPluginsState']['id']);
+				continue;
 			}
 
 			$plugin['Tag'] = array();
-			foreach($data['tags'] as $name) {
-				$name = strtolower(Inflector::slug($name, ' '));
-				$record = $this->Tag->findByName($name);
-				if(!$record) {
-					$this->Tag->create(array('name' => $name));
-					$record = $this->Tag->save();
-				}
-				// Skip this tag if it has already been added.
-				if(Hash::check($plugin, sprintf('Tag.{n}[id=%d]', $record['Tag']['id']))) {
-					continue;
-				}
-				$record['Tag']['PluginsTag'] = array(
-					'plugin_id' => $plugin['Plugin']['id'],
-					'tag_id' => $record['Tag']['id'],
-				);
-				$plugin['Tag'][] = $record['Tag'];
+			try {
+				$plugin['Tag'] = $this->_saveTags($plugin, $data);
+			} catch(CakeException $exception) {
+				$this->out(__('<warning>Failed to save tags for "%s" (%d): %s</warning>',
+				              $plugin['Plugin']['slug'], $plugin['Plugin']['id'], $exception->getMessage()));
+				$this->PluginsState->touch($plugin['InnerPluginsState']['id']);
+				continue;
 			}
 
 			$updated_plugins[] = $plugin;
@@ -239,6 +223,72 @@ class RefreshShell extends AppShell {
 
 		$this->_unlock();
 		return 0;
+	}
+
+	/**
+	 * Creates new Contributor records as necessary, and records appropriate
+	 * record IDs for those in the Plugin.
+	 *
+	 * @param $plugin
+	 * @param $data
+	 *
+	 * @return array
+	 *
+	 * @throws CakeException Failed to create new Contributor record.
+	 */
+	protected function _saveContributors($plugin, $data)
+	{
+		$contributors = array();
+		foreach($data['contributors'] as $name => $url) {
+			// Only save real wp.org usernames.
+			if(!preg_match('/profiles\.wordpress\.org/', $url))
+				continue;
+			$record = $this->Contributor->findByName($name);
+			if(!$record) {
+				$this->Contributor->create(array('name' => $name));
+				$record = $this->Contributor->save();
+			}
+			$record['Contributor']['ContributorsPlugin'] = array(
+				'contributor_id' => $record['Contributor']['id'],
+				'plugin_id' => $plugin['Plugin']['id'],
+			);
+			$contributors[] = $record['Contributor'];
+		}
+		return $contributors;
+	}
+
+	/**
+	 * Creates new Tag records as necessary, and records appropriate
+	 * record IDs for those in the Plugin.
+	 *
+	 * @param $plugin
+	 * @param $data
+	 *
+	 * @return array
+	 *
+	 * @throws CakeException Failed to create new Tag record.
+	 */
+	protected function _saveTags($plugin, $data)
+	{
+		$tags = array();
+		foreach($data['tags'] as $name) {
+			$name = strtolower(Inflector::slug($name, ' '));
+			$record = $this->Tag->findByName($name);
+			if(!$record) {
+				$this->Tag->create(array('name' => $name));
+				$record = $this->Tag->save();
+			}
+			// Skip this tag if it has already been added.
+			if(Hash::check($plugin, sprintf('Tag.{n}[id=%d]', $record['Tag']['id']))) {
+				continue;
+			}
+			$record['Tag']['PluginsTag'] = array(
+				'plugin_id' => $plugin['Plugin']['id'],
+				'tag_id' => $record['Tag']['id'],
+			);
+			$tags[] = $record['Tag'];
+		}
+		return $tags;
 	}
 
 	/**
