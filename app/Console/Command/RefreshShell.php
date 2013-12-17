@@ -179,7 +179,7 @@ class RefreshShell extends AppShell {
 			$plugin['Contributor'] = array();
 			try {
 				$plugin['Contributor'] = $this->_saveContributors($plugin, $data);
-			} catch(CakeException $exception) {
+			} catch(PDOException $exception) {
 				$this->out(__('<warning>Failed to save contributors for "%s" (%d): %s</warning>',
 				              $plugin['Plugin']['slug'], $plugin['Plugin']['id'], $exception->getMessage()));
 				$this->PluginsState->touch($plugin['InnerPluginsState']['id']);
@@ -189,7 +189,7 @@ class RefreshShell extends AppShell {
 			$plugin['Tag'] = array();
 			try {
 				$plugin['Tag'] = $this->_saveTags($plugin, $data);
-			} catch(CakeException $exception) {
+			} catch(PDOException $exception) {
 				$this->out(__('<warning>Failed to save tags for "%s" (%d): %s</warning>',
 				              $plugin['Plugin']['slug'], $plugin['Plugin']['id'], $exception->getMessage()));
 				$this->PluginsState->touch($plugin['InnerPluginsState']['id']);
@@ -234,7 +234,7 @@ class RefreshShell extends AppShell {
 	 *
 	 * @return array
 	 *
-	 * @throws CakeException Failed to create new Contributor record.
+	 * @throws PDOException Failed to create new Contributor record.
 	 */
 	protected function _saveContributors($plugin, $data)
 	{
@@ -266,13 +266,20 @@ class RefreshShell extends AppShell {
 	 *
 	 * @return array
 	 *
-	 * @throws CakeException Failed to create new Tag record.
+	 * @throws PDOException Failed to create new Tag record.
 	 */
 	protected function _saveTags($plugin, $data)
 	{
 		$tags = array();
+
+		$inflected_tags = array();
 		foreach($data['tags'] as $name) {
-			$name = strtolower(Inflector::slug($name, ' '));
+			$inflected_tags[] = strtolower(Inflector::slug($name, ' '));
+		}
+		// Inflected tags could result in duplicate tags.
+		$inflected_tags = array_unique($inflected_tags);
+
+		foreach($inflected_tags as $name) {
 			$record = $this->Tag->findByName($name);
 			if(!$record) {
 				$this->Tag->create(array('name' => $name));
@@ -288,6 +295,7 @@ class RefreshShell extends AppShell {
 			);
 			$tags[] = $record['Tag'];
 		}
+
 		return $tags;
 	}
 
